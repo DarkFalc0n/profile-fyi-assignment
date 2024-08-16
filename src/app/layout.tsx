@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import { Toaster } from "@/components/ui/toaster";
+import { CartProvider } from "@/hooks/useCart";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -18,8 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <Header />
-        {children}
+        <CartProvider>
+          <Header />
+          {children}
+          <Toaster />
+        </CartProvider>
       </body>
     </html>
   );

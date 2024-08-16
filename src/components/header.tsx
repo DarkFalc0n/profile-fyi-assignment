@@ -1,8 +1,17 @@
+"use client";
+
 import { FCProps } from "@/types";
-import CartButton from "@/ui/cartButton";
-import LoginButton from "@/ui/loginButton";
+import CartButton from "@/elements/cartButton";
+import LoginButton from "@/elements/loginButton";
+import { useCart } from "@/hooks/useCart";
 
 const Header: FCProps = () => {
+  const [cartItems] = useCart();
+  const totalQuantity = cartItems.products.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
+
   return (
     <div className="w-full h-20 sticky top-0 flex flex-col justify-center bg-white">
       <div className="w-full px-6 flex justify-between">
@@ -11,7 +20,7 @@ const Header: FCProps = () => {
         </h1>
         <div className="flex justify-between">
           <LoginButton />
-          <CartButton />
+          <CartButton itemQuantity={totalQuantity} />
         </div>
       </div>
     </div>

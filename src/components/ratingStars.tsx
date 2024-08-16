@@ -1,6 +1,5 @@
 import { FCProps } from "@/types";
 import { FaStar, FaStarHalf } from "react-icons/fa6";
-import Image from "next/image";
 
 const normalisedStars = (rating: number) => {
   const stars = [];

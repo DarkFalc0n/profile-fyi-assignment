@@ -1,6 +1,6 @@
 import { FCProps } from "@/types";
 import RatingStars from "./ratingStars";
-import AddToCartButton from "@/ui/addToCartButton";
+import AddToCartButton from "@/elements/addToCartButton";
 
 export interface ProductCardProps {
   title: string;
@@ -10,7 +10,7 @@ export interface ProductCardProps {
 
 const ProductCard: FCProps<ProductCardProps> = (props) => {
   return (
-    <div className="shadow w-64 h-96 rounded-xl overflow-hidden bg-white">
+    <div className="shadow h-96 rounded-xl overflow-hidden bg-white">
       <div className="w-full h-56 bg-slate-200"></div>
       <div className="h-40 px-4 flex flex-col justify-start">
         <RatingStars rating={4.3} />
