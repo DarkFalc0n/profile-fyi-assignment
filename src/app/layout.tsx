@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/hooks/useCart";
+import { ProductsProvider } from "@/hooks/useProducts";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -21,9 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <CartProvider>
-          <Header />
-          {children}
-          <Toaster />
+          <ProductsProvider>
+            <Header />
+            {children}
+            <Toaster />
+          </ProductsProvider>
         </CartProvider>
       </body>
     </html>

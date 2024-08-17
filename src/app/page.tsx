@@ -1,3 +1,5 @@
+"use client";
+
 import SearchBar from "@/components/searchBar";
 import ProductCard from "@/components/productCard";
 import {
@@ -7,9 +9,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FaSortNumericDown } from "react-icons/fa";
+import { useProducts } from "@/hooks/useProducts";
 
 export default function Home() {
+  const { products, loading } = useProducts();
   return (
     <main className="flex flex-col max-h-full justify-between px-20 py-12 bg-background">
       <SearchBar />
@@ -26,15 +29,14 @@ export default function Home() {
             </SelectContent>
           </Select>
         </div>
-        <div className="grid grid-cols-4 gap-6 p-4 grow bg-white rounded-xl h-full">
-          <ProductCard title={"Hello"} price={22.23} image="lol" />
-          <ProductCard title={"Hello"} price={22} image="lol" />
-          <ProductCard title={"Hello"} price={22} image="lol" />
-          <ProductCard title={"Hello"} price={22} image="lol" />
-          <ProductCard title={"Hello"} price={22.23} image="lol" />
-          <ProductCard title={"Hello"} price={22} image="lol" />
-          <ProductCard title={"Hello"} price={22} image="lol" />
-          <ProductCard title={"Hello"} price={22} image="lol" />
+        <div className="grid grid-cols-3 gap-6 p-4 grow bg-white rounded-xl h-full">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            products.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))
+          )}
         </div>
       </div>
     </main>

@@ -27,6 +27,7 @@ interface ICartAction {
   quantity?: number;
 }
 
+//reducer to update cart state
 const reducer = (state: ICartState, action: ICartAction): ICartState => {
   switch (action.type) {
     case "ADD_TO_CART":
@@ -69,12 +70,14 @@ const reducer = (state: ICartState, action: ICartAction): ICartState => {
   }
 };
 
+//Context to provide cart state and actions
 const CartItemsContext = createContext<ICartState>({
   products: [],
   loading: true,
 });
 const CartActionsContext = createContext<React.Dispatch<ICartAction>>(() => {});
 
+//Cart context provider
 export const CartProvider: FCProps = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     products: [],
@@ -90,6 +93,7 @@ export const CartProvider: FCProps = ({ children }) => {
   );
 };
 
+//Custom hook to access cart state and actions
 export const useCart = () => {
   const [stateContext, dispatchContext] = [
     useContext(CartItemsContext),

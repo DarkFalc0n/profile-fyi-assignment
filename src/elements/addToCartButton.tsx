@@ -3,8 +3,10 @@ import React from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { useCart } from "@/hooks/useCart";
+import { FCProps } from "@/types";
+import { Product } from "@/hooks/useProducts";
 
-const AddToCartButton = () => {
+const AddToCartButton: FCProps<{ product: Product }> = ({ product }) => {
   const { toast } = useToast();
   const [cartItems, cartAction] = useCart();
 
@@ -13,15 +15,7 @@ const AddToCartButton = () => {
       onClick={() => {
         cartAction({
           type: "ADD_TO_CART",
-          product: {
-            id: "1",
-            title: "Hello",
-            price: 10,
-            rating: {
-              average: 4,
-              count: 100,
-            },
-          },
+          product,
         });
         toast({
           title: "Added to cart",

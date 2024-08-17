@@ -13,12 +13,17 @@ const normalisedStars = (rating: number) => {
   return stars;
 };
 
-const RatingStars: FCProps<{ rating: number }> = ({ rating }) => {
+const RatingStars: FCProps<{ rating: number; count: number }> = ({
+  rating,
+  count,
+}) => {
   return (
     <div className="py-2 flex">
       <div className="font-regular mr-2 text-sm">{rating}</div>
-      {normalisedStars(rating)}
-      <div className="font-light ml-2 text-sm text-slate-500">(126)</div>
+      <div className="w-20 flex">{normalisedStars(rating)}</div>
+      <div className="font-light ml-2 text-sm text-slate-500">
+        ({count} ratings)
+      </div>
     </div>
   );
 };
