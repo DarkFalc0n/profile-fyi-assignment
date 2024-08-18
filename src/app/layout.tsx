@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Anek_Latin, Dela_Gothic_One } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/hooks/useCart";
 import { ProductsProvider } from "@/hooks/useProducts";
-
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Profile.fyi - Assignment",
@@ -20,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
+      <body>
         <CartProvider>
           <ProductsProvider>
             <Header />

@@ -2,10 +2,8 @@
 import { useCart } from "@/hooks/useCart";
 
 const CartPage = () => {
-  const [cartItems, cartAction] = useCart();
-  return (
-    <div className="bg-background">{JSON.stringify(cartItems.products)}</div>
-  );
+  const { cartState } = useCart();
+  return <div className="">{JSON.stringify(cartState.products)}</div>;
 };
 
 export default CartPage;

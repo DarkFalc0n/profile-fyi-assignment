@@ -17,12 +17,16 @@ const config = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      heading: ['"Dela Gothic One"'],
+      body: ['"Anek Latin"'],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#f5f0fa",
+        background: "#f6f5f1",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",

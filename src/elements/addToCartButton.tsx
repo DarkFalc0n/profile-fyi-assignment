@@ -8,18 +8,18 @@ import { Product } from "@/hooks/useProducts";
 
 const AddToCartButton: FCProps<{ product: Product }> = ({ product }) => {
   const { toast } = useToast();
-  const [cartItems, cartAction] = useCart();
+  const { cartDispatch } = useCart();
 
   return (
     <button
       onClick={() => {
-        cartAction({
+        cartDispatch({
           type: "ADD_TO_CART",
           product,
         });
         toast({
           title: "Added to cart",
-          description: "Men's Basic Tee",
+          description: product.title,
           action: <ToastAction altText="Cart">Go to Cart</ToastAction>,
         });
       }}

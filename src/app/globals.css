@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Dela+Gothic+One&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +11,7 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: #252422;
+    --primary: #151515;
     --primary-foreground: 0 0% 98%;
     --secondary: #403d39;
     --secondary-foreground: 0 0% 9%;

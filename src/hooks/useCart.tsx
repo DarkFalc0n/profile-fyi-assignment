@@ -95,12 +95,12 @@ export const CartProvider: FCProps = ({ children }) => {
 
 //Custom hook to access cart state and actions
 export const useCart = () => {
-  const [stateContext, dispatchContext] = [
+  const [cartState, cartDispatch] = [
     useContext(CartItemsContext),
     useContext(CartActionsContext),
   ];
-  if (stateContext === undefined || dispatchContext === undefined) {
+  if (cartState === undefined || cartDispatch === undefined) {
     throw new Error("useCart must be used within a CartProvider");
   }
-  return [stateContext, dispatchContext] as const;
+  return { cartState, cartDispatch } as const;
 };

@@ -3,18 +3,10 @@ import { FCProps } from "@/types";
 import RatingStars from "./ratingStars";
 import AddToCartButton from "@/elements/addToCartButton";
 import { useState } from "react";
+import { Product } from "@/hooks/useProducts";
+import Image from "next/image";
 
-export interface ProductCardProps {
-  title: string;
-  price: number;
-  image?: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
-
-const ProductCard: FCProps<ProductCardProps> = (props) => {
+const ProductCard: FCProps<Product> = (props) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div
@@ -23,7 +15,11 @@ const ProductCard: FCProps<ProductCardProps> = (props) => {
       style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}
       className="shadow h-96 rounded-xl overflow-hidden bg-white duration-200"
     >
-      <div className="w-full h-56 bg-slate-200"></div>
+      <div className="w-full h-56 relative">
+        {props.image && (
+          <Image src={props.image} alt={props.title} objectFit="contain" fill />
+        )}
+      </div>
       <div className="h-40 px-4 flex flex-col justify-start">
         <RatingStars rating={props.rating.rate} count={props.rating.count} />
         <div className="line-clamp-1 font-medium text-slate-900">
