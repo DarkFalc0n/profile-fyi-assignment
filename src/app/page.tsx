@@ -25,7 +25,7 @@ export default function Home() {
       </h1>
       <p className="text-center mt-2 mb-24 w-[70vw] text-lg text-stone-500">
         Discover products that reflect your unique style and personality.
-        Whether you're looking for the latest trends or timeless classics,
+        Whether you&apos;re looking for the latest trends or timeless classics,
         we&apos;ve got you covered. Shop with confidence, knowing every choice
         helps you stay true to who you are.
       </p>
