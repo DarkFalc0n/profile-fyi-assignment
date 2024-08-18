@@ -46,6 +46,14 @@ const reducer = (state: ICartState, action: ICartAction): ICartState => {
         ),
       };
     case "UPDATE_QUANTITY":
+      if (action.quantity === 0) {
+        return {
+          ...state,
+          products: state.products.filter(
+            (product) => product.id !== action.product.id
+          ),
+        };
+      }
       return {
         ...state,
         products: state.products.map((product) => {

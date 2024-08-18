@@ -10,6 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useProducts } from "@/hooks/useProducts";
+import CategoryButton from "@/elements/categoryButton";
+import CategoryCarousel from "@/components/ui/categoryCarousel";
 
 export default function Home() {
   const { productsState, productsDispatch } = useProducts();
@@ -27,6 +29,7 @@ export default function Home() {
         we&apos;ve got you covered. Shop with confidence, knowing every choice
         helps you stay true to who you are.
       </p>
+      <CategoryCarousel />
       <SearchBar />
       <div className="flex gap-4 py-6 h-full">
         {/* <div className="min-h-60 bg-white rounded-xl w-64 p-4 h-full">

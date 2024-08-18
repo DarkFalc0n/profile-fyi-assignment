@@ -33,6 +33,7 @@ type IProductAction =
     }
   | { type: "SORT_PRODUCTS"; sort: "PRICE_ASC" | "PRICE_DESC" | "RATING" }
   | { type: "FILTER"; category: string }
+  | { type: "REMOVE_FILTER" }
   | { type: "SEARCH"; search: string };
 
 async function fetchProducts(): Promise<Product[]> {
@@ -73,6 +74,11 @@ const reducer = (
         displayProducts: state.products.filter(
           (product) => product.category === action.category
         ),
+      };
+    case "REMOVE_FILTER":
+      return {
+        ...state,
+        displayProducts: state.products,
       };
     case "SEARCH":
       return {

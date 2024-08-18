@@ -5,9 +5,12 @@ import AddToCartButton from "@/elements/addToCartButton";
 import { useState } from "react";
 import { Product } from "@/hooks/useProducts";
 import Image from "next/image";
+import { useCart } from "@/hooks/useCart";
+import QuantitySelector from "@/elements/quantitySelector";
 
 const ProductCard: FCProps<Product> = (props) => {
   const [hovered, setHovered] = useState(false);
+  const { cartState } = useCart();
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -34,7 +37,11 @@ const ProductCard: FCProps<Product> = (props) => {
         <div className="block text-2xl font-semibold text-slate-900">
           $ {props.price}
         </div>
-        <AddToCartButton product={props} />
+        {cartState.products.map((p) => p.id).includes(props.id) ? (
+          <QuantitySelector product={props as Product} />
+        ) : (
+          <AddToCartButton product={props as Product} />
+        )}
       </div>
     </div>
   );
