@@ -19,7 +19,7 @@ const CategoryButton: FCProps<{
         setCategory(text);
       }}
       className={cn(
-        "w-48 rounded-full capitalize border-stone-800 border-2 hover:bg-stone-800 hover:text-white flex justify-center px-4 py-1 duration-200"
+        "w-48 rounded-full capitalize border-stone-800 border-2 md:hover:bg-stone-800 md:hover:text-white flex justify-center px-4 py-1 duration-200"
       )}
       style={
         category == text ? { backgroundColor: "#292524", color: "white" } : {}

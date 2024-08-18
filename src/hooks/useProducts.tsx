@@ -11,7 +11,7 @@ export interface Product {
     count: number;
   };
   category: string;
-  image?: string;
+  image: string;
 }
 
 interface IProductState {

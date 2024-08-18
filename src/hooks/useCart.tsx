@@ -4,7 +4,7 @@ import { Product } from "./useProducts";
 import { FCProps } from "@/types";
 
 //Product in cart
-interface ICartProduct extends Product {
+export interface ICartProduct extends Product {
   quantity: number;
 }
 
@@ -19,13 +19,14 @@ type ICartActionType =
   | "ADD_TO_CART"
   | "REMOVE_FROM_CART"
   | "UPDATE_QUANTITY"
-  | "CLEAR_CART"
   | "SET_LOADING_DONE";
-interface ICartAction {
-  type: ICartActionType;
-  product: Product;
-  quantity?: number;
-}
+type ICartAction =
+  | {
+      type: ICartActionType;
+      product: Product;
+      quantity?: number;
+    }
+  | { type: "CLEAR_CART" };
 
 //reducer to update cart state
 const reducer = (state: ICartState, action: ICartAction): ICartState => {

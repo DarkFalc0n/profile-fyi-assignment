@@ -15,11 +15,11 @@ const Header: FCProps = () => {
 
   return (
     <div className="w-full h-20 flex flex-col justify-center z-30">
-      <div className="w-full px-6 flex justify-between">
-        <h1 className="leading-1 text-lg text-primary flex flex-col justify-center">
+      <div className="w-full px-6 flex md:justify-between justify-end">
+        <h1 className="leading-1 text-lg md:flex hidden text-primary flex-col justify-center">
           Profile.fyi - Frontend Assignment
         </h1>
-        <h1 className="flex flex-col text-3xl font-heading w-full -translate-x-6 text-center absolute tracking-widest justify-center">
+        <h1 className="flex flex-col text-3xl font-heading w-full translate-x-6 text-center absolute tracking-widest justify-center">
           TULOS
         </h1>
         <div className="flex justify-between">

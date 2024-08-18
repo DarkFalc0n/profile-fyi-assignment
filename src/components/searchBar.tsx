@@ -14,13 +14,13 @@ const SearchBar: FCProps = () => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex items-center justify-center w-full mt-6">
       <IoIosSearch className="text-primary text-2xl mr-4" />
       <input
         type="text"
         placeholder="Search for products..."
         onChange={handleSearch}
-        className="px-4 py-2 border w-full border-gray-300 rounded-md focus:outline-none bg-background"
+        className="px-4 py-2 border w-full border-stone-500 rounded-md focus:outline-none bg-background"
       />
     </div>
   );

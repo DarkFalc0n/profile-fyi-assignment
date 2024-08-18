@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { useProducts } from "@/hooks/useProducts";
 import CategoryButton from "@/elements/categoryButton";
-import CategoryCarousel from "@/components/ui/categoryCarousel";
+import CategoryCarousel from "@/components/categoryCarousel";
 
 export default function Home() {
   const { productsState, productsDispatch } = useProducts();
@@ -19,11 +19,11 @@ export default function Home() {
     productsDispatch({ type: "SORT_PRODUCTS", sort: value });
   };
   return (
-    <main className="flex flex-col max-h-full justify-between px-20 py-12 items-center">
+    <main className="flex flex-col max-h-full justify-between md:px-20 px-6 py-12 items-center">
       <h1 className="text-3xl font-heading w-full text-center">
         STAY TRUE TO YOU
       </h1>
-      <p className="text-center mt-2 mb-8 w-[70vw] text-lg text-stone-500">
+      <p className="text-center mt-2 mb-24 w-[70vw] text-lg text-stone-500">
         Discover products that reflect your unique style and personality.
         Whether you're looking for the latest trends or timeless classics,
         we&apos;ve got you covered. Shop with confidence, knowing every choice
@@ -44,7 +44,7 @@ export default function Home() {
             </SelectContent>
           </Select>
         </div> */}
-        <div className="grid grid-cols-3 gap-6 p-4 grow h-full">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-6 md:p-4 grow h-full">
           {productsState.loading ? (
             <div>Loading...</div>
           ) : (

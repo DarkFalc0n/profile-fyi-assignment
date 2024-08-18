@@ -1,8 +1,6 @@
 import {
   Carousel,
   CarouselContent,
-  CarouselNext,
-  CarouselPrevious,
   CarouselItem,
 } from "@/components/ui/carousel";
 import CategoryButton from "@/elements/categoryButton";
@@ -39,10 +37,10 @@ const CategoryCarousel = () => {
   }, [appliedCategory]);
 
   return (
-    <Carousel className="mb-4">
+    <Carousel className="mb-4 md:w-auto w-[100vw]">
       <CarouselContent>
         {categories.map((category) => (
-          <CarouselItem className="pl-6 basis-1/4" key={category}>
+          <CarouselItem className="pl-6 md:basis-1/4 basis-1/2" key={category}>
             <CategoryButton
               text={category}
               category={appliedCategory}

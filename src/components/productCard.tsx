@@ -15,7 +15,7 @@ const ProductCard: FCProps<Product> = (props) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="h-96 overflow-hidden bg-white duration-200"
+      className="h-[25rem] overflow-hidden bg-white duration-200"
     >
       <div className="w-full h-56 relative">
         {props.image && (
@@ -38,7 +38,12 @@ const ProductCard: FCProps<Product> = (props) => {
           $ {props.price}
         </div>
         {cartState.products.map((p) => p.id).includes(props.id) ? (
-          <QuantitySelector product={props as Product} />
+          <div className="flex justify-center gap-8 mt-2 bg-stone-200 px-4 py-2">
+            <div className="flex flex-col text-xl justify-center font-bold">
+              In Cart
+            </div>
+            <QuantitySelector product={props as Product} />
+          </div>
         ) : (
           <AddToCartButton product={props as Product} />
         )}
