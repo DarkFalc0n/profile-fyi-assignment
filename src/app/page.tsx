@@ -12,6 +12,7 @@ import {
 import { useProducts } from "@/hooks/useProducts";
 import CategoryCarousel from "@/components/categoryCarousel";
 import { LuSettings2 } from "react-icons/lu";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Home() {
   const { productsState, productsDispatch } = useProducts();
@@ -30,9 +31,9 @@ export default function Home() {
         helps you stay true to who you are.
       </p>
       <CategoryCarousel />
-      <div className="flex w-full gap-6">
+      <div className="md:flex w-full gap-6">
         <SearchBar />
-        <div className="flex flex-col justify-end">
+        <div className="md:py-0 py-4 flex flex-col justify-end">
           <Select onValueChange={(value) => handleSort(value)}>
             <SelectTrigger className="w-[180px]">
               <LuSettings2 size={20} className="text-primary" />
@@ -46,15 +47,24 @@ export default function Home() {
           </Select>
         </div>
       </div>
-      <div className="flex gap-4 py-6 h-full">
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-6 md:p-4 grow h-full">
-          {productsState.loading ? (
-            <div>Loading...</div>
-          ) : (
-            productsState.displayProducts.map((product) => (
-              <ProductCard key={product.id} {...product} />
-            ))
-          )}
+      <div className="flex gap-4 py-6 h-full w-full">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-6 md:p-4 grow h-full w-full">
+          {productsState.loading
+            ? Array.from({ length: 3 }).map((_, index) => (
+                <div
+                  key={index}
+                  className=" w-full flex flex-col space-y-3 items-center"
+                >
+                  <Skeleton className="h-56 w-full rounded-xl bg-stone-400" />
+                  <div className="space-y-2 h-40 items-start">
+                    <Skeleton className="h-4 w-[250px] bg-stone-400" />
+                    <Skeleton className="h-4 w-[200px] bg-stone-400" />
+                  </div>
+                </div>
+              ))
+            : productsState.displayProducts.map((product) => (
+                <ProductCard key={product.id} {...product} />
+              ))}
         </div>
       </div>
     </main>

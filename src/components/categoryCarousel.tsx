@@ -6,6 +6,7 @@ import {
 import CategoryButton from "@/elements/categoryButton";
 import { useProducts } from "@/hooks/useProducts";
 import { useEffect, useState } from "react";
+import { Skeleton } from "./ui/skeleton";
 
 const CategoryCarousel = () => {
   const { productsState, productsDispatch } = useProducts();
@@ -39,15 +40,25 @@ const CategoryCarousel = () => {
   return (
     <Carousel className="mb-4 md:w-auto w-[100vw]">
       <CarouselContent>
-        {categories.map((category) => (
-          <CarouselItem className="pl-6 md:basis-1/4 basis-1/2" key={category}>
-            <CategoryButton
-              text={category}
-              category={appliedCategory}
-              setCategory={setAppliedCategory}
-            />
-          </CarouselItem>
-        ))}
+        {productsState.loading
+          ? Array.from({ length: 4 }).map((_, index) => (
+              <Skeleton
+                key={index}
+                className="md:basis-1/4 basis-1/2 bg-stone-400 w-48 h-8 mx-4"
+              />
+            ))
+          : categories.map((category) => (
+              <CarouselItem
+                className="pl-6 md:basis-1/4 basis-1/2"
+                key={category}
+              >
+                <CategoryButton
+                  text={category}
+                  category={appliedCategory}
+                  setCategory={setAppliedCategory}
+                />
+              </CarouselItem>
+            ))}
       </CarouselContent>
     </Carousel>
   );
