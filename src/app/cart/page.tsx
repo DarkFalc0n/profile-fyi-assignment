@@ -1,5 +1,6 @@
 "use client";
 import CartItem from "@/components/cartItem";
+import Summary from "@/components/summary";
 import { useCart } from "@/hooks/useCart";
 import { IoTrashBinOutline } from "react-icons/io5";
 
@@ -12,7 +13,7 @@ const CartPage = () => {
           <h1 className="font-bold text-3xl mb-6">Your Cart</h1>
           <button
             onClick={() => cartDispatch({ type: "CLEAR_CART" })}
-            className="text-primary px-4 h-12 rounded-full hover:border-red-500 hover:bg-red-500 hover:text-white duration-200 border-stone-800 border-2 flex flex-col justify-center"
+            className="text-primary px-4 md:h-12 h-10 rounded-full hover:border-red-500 hover:bg-red-500 hover:text-white duration-200 border-stone-800 border-2 flex flex-col justify-center"
           >
             <div className="flex gap-2">
               <IoTrashBinOutline size={24} />
@@ -25,13 +26,14 @@ const CartPage = () => {
             <CartItem key={product.id} product={product} />
           ))
         ) : (
-          <div className="text-center mt-12 w-[70vw] text-lg text-stone-500">
+          <div className="text-center mt-12 mb-12 text-lg text-stone-500">
             Your cart is empty.
           </div>
         )}
       </div>
-      <div>
-        <h1 className="font-bold text-3xl">Summary</h1>
+      <div className="md:w-1/4">
+        <h1 className="font-bold text-3xl ">Summary</h1>
+        <Summary />
       </div>
     </div>
   );
