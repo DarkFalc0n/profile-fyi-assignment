@@ -4,6 +4,7 @@ import { FCProps } from "@/types";
 import CartButton from "@/elements/cartButton";
 import LoginButton from "@/elements/loginButton";
 import { useCart } from "@/hooks/useCart";
+import Link from "next/link";
 
 const Header: FCProps = () => {
   const { cartState } = useCart();
@@ -19,9 +20,12 @@ const Header: FCProps = () => {
         <h1 className="leading-1 text-lg md:flex hidden text-primary flex-col justify-center">
           Profile.fyi - Frontend Assignment
         </h1>
-        <h1 className="flex flex-col text-3xl font-heading w-full md:-translate-x-6 translate-x-6 text-center absolute tracking-widest justify-center">
+        <Link
+          href="/"
+          className="flex flex-col text-3xl font-heading w-full md:-translate-x-6 translate-x-6 text-center absolute tracking-widest justify-center"
+        >
           TULOS
-        </h1>
+        </Link>
         <div className="flex justify-between">
           <LoginButton />
           <CartButton itemQuantity={totalQuantity} />
