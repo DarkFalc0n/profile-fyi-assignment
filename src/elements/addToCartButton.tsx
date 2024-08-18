@@ -23,7 +23,7 @@ const AddToCartButton: FCProps<{ product: Product }> = ({ product }) => {
           action: <ToastAction altText="Cart">Go to Cart</ToastAction>,
         });
       }}
-      className="mt-2 bg-white hover:bg-cta-regular px-2 py-2 rounded-md hover:text-white text-regular border-cta-regular border-2 duration-200 font-medium"
+      className="mt-2 bg-white hover:bg-stone-800 px-2 py-2 rounded-full hover:text-white text-regular border-stone-800 border-2 duration-200 font-medium"
     >
       Add to Cart
     </button>

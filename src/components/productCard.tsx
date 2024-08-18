@@ -12,12 +12,18 @@ const ProductCard: FCProps<Product> = (props) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}
-      className="shadow h-96 rounded-xl overflow-hidden bg-white duration-200"
+      className="h-96 overflow-hidden bg-white duration-200"
     >
       <div className="w-full h-56 relative">
         {props.image && (
-          <Image src={props.image} alt={props.title} objectFit="contain" fill />
+          <Image
+            src={props.image}
+            alt={props.title}
+            objectFit="contain"
+            fill
+            className="p-4 duration-200"
+            style={{ scale: hovered ? 1.1 : 1 }}
+          />
         )}
       </div>
       <div className="h-40 px-4 flex flex-col justify-start">
