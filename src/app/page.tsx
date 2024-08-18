@@ -10,8 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useProducts } from "@/hooks/useProducts";
-import CategoryButton from "@/elements/categoryButton";
 import CategoryCarousel from "@/components/categoryCarousel";
+import { LuSettings2 } from "react-icons/lu";
 
 export default function Home() {
   const { productsState, productsDispatch } = useProducts();
@@ -30,11 +30,12 @@ export default function Home() {
         helps you stay true to who you are.
       </p>
       <CategoryCarousel />
-      <SearchBar />
-      <div className="flex gap-4 py-6 h-full">
-        {/* <div className="min-h-60 bg-white rounded-xl w-64 p-4 h-full">
+      <div className="flex w-full gap-6">
+        <SearchBar />
+        <div className="flex flex-col justify-end">
           <Select onValueChange={(value) => handleSort(value)}>
             <SelectTrigger className="w-[180px]">
+              <LuSettings2 size={20} className="text-primary" />
               <SelectValue placeholder="Sort By" />
             </SelectTrigger>
             <SelectContent>
@@ -43,7 +44,9 @@ export default function Home() {
               <SelectItem value="RATING">Rating</SelectItem>
             </SelectContent>
           </Select>
-        </div> */}
+        </div>
+      </div>
+      <div className="flex gap-4 py-6 h-full">
         <div className="grid md:grid-cols-3 grid-cols-1 gap-6 md:p-4 grow h-full">
           {productsState.loading ? (
             <div>Loading...</div>
