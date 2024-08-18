@@ -1,5 +1,6 @@
 "use client";
 
+import CheckoutButton from "@/elements/checkoutButton";
 import { useCart } from "@/hooks/useCart";
 
 const Summary = () => {
@@ -33,6 +34,7 @@ const Summary = () => {
         <h1 className="text-xl font-bold">Total</h1>
         <div className="text-2xl font-bold text-right">${total.toFixed(2)}</div>
       </div>
+      <CheckoutButton />
     </div>
   );
 };
