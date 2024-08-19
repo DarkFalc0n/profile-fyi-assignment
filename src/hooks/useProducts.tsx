@@ -2,6 +2,7 @@
 import { FCProps } from "@/types";
 import { createContext, useContext, useEffect, useReducer } from "react";
 
+// Product interface
 export interface Product {
   id: string;
   title: string;
@@ -36,6 +37,7 @@ type IProductAction =
   | { type: "REMOVE_FILTER" }
   | { type: "SEARCH"; search: string };
 
+// Fetch products from API
 async function fetchProducts(): Promise<Product[]> {
   const response = await fetch("https://fakestoreapi.com/products");
   const data = await response.json();
