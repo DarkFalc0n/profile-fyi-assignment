@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { Product } from "./useProducts";
 import { FCProps } from "@/types";
 
@@ -15,18 +15,16 @@ interface ICartState {
 }
 
 //Action performed on cart
-type ICartActionType =
-  | "ADD_TO_CART"
-  | "REMOVE_FROM_CART"
-  | "UPDATE_QUANTITY"
-  | "SET_LOADING_DONE";
+type ICartActionType = "ADD_TO_CART" | "REMOVE_FROM_CART" | "UPDATE_QUANTITY";
+
 type ICartAction =
   | {
       type: ICartActionType;
       product: Product;
       quantity?: number;
     }
-  | { type: "CLEAR_CART" };
+  | { type: "CLEAR_CART" }
+  | { type: "SET_LOADING_DONE" };
 
 //reducer to update cart state
 const reducer = (state: ICartState, action: ICartAction): ICartState => {
@@ -92,6 +90,31 @@ export const CartProvider: FCProps = ({ children }) => {
     products: [],
     loading: true,
   });
+
+  useEffect(() => {
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      dispatch({ type: "SET_LOADING_DONE" });
+      dispatch({ type: "CLEAR_CART" });
+      const cartItems = JSON.parse(cart) as ICartProduct[];
+      cartItems.forEach((product) => {
+        dispatch({ type: "ADD_TO_CART", product });
+        dispatch({
+          type: "UPDATE_QUANTITY",
+          product,
+          quantity: product.quantity,
+        });
+      });
+    } else {
+      dispatch({ type: "SET_LOADING_DONE" });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!state.loading) {
+      localStorage.setItem("cart", JSON.stringify(state.products));
+    }
+  }, [state.products]);
 
   return (
     <CartItemsContext.Provider value={state}>
